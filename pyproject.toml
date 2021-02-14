@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "philiprehberger-timerfunc"
-version = "0.1.1"
+version = "0.1.2"
 description = "Measure execution time of any function"
 readme = "README.md"
 license = "MIT"
