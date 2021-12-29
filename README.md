@@ -54,6 +54,14 @@ print(result)  # full stats summary
 - `@timed` / `@timed(threshold_ms=0)` — Decorator logging execution time
 - `benchmark(fn, args, kwargs, iterations, warmup)` — Returns `BenchmarkResult`
 
+
+## Development
+
+```bash
+pip install -e .
+python -m pytest tests/ -v
+```
+
 ## License
 
 MIT
