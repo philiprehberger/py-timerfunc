@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "philiprehberger-timerfunc"
-version = "0.1.5"
+version = "0.1.6"
 description = "Measure execution time of any function"
 readme = "README.md"
 license = "MIT"
@@ -31,3 +31,9 @@ Changelog = "https://github.com/philiprehberger/py-timerfunc/blob/main/CHANGELOG
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/philiprehberger_timerfunc"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.mypy]
+strict = true
