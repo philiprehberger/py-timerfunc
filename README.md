@@ -50,9 +50,11 @@ print(result)  # full stats summary
 
 ## API
 
-- `timer()` — Context manager returning `TimerResult`
-- `@timed` / `@timed(threshold_ms=0)` — Decorator logging execution time
-- `benchmark(fn, args, kwargs, iterations, warmup)` — Returns `BenchmarkResult`
+| Function / Class | Description |
+|------------------|-------------|
+| `timer()` | Context manager returning `TimerResult` |
+| `@timed` / `@timed(threshold_ms=0)` | Decorator logging execution time |
+| `benchmark(fn, args, kwargs, iterations, warmup)` | Returns `BenchmarkResult` |
 
 
 ## Development
