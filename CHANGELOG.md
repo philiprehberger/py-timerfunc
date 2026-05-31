@@ -1,6 +1,13 @@
 # Changelog
-## 0.1.6- Standardize README structure and fix compliance issues
-## 0.1.5- Add pytest and mypy tool configuration to pyproject.toml
+
+## 0.2.0 (2026-05-30)
+
+- Add `BenchmarkResult.fastest` and `slowest` properties (aliases of existing `min_ms` and `max_ms`)
+- Add `compare_benchmarks(a, b)` returning the relative speed ratio
+
+## 0.1.6 (2026-04-01)
+
+- Standardize README structure and fix compliance issues
 
 ## 0.1.5 (2026-03-31)
 

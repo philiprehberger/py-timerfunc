@@ -14,6 +14,7 @@ __all__ = [
     "timer",
     "timed",
     "benchmark",
+    "compare_benchmarks",
     "TimerResult",
     "BenchmarkResult",
 ]
@@ -137,6 +138,16 @@ class BenchmarkResult:
     def total_ms(self) -> float:
         return sum(self.timings_ms)
 
+    @property
+    def fastest(self) -> float:
+        """Return the duration of the fastest run (in milliseconds)."""
+        return self.min_ms
+
+    @property
+    def slowest(self) -> float:
+        """Return the duration of the slowest run (in milliseconds)."""
+        return self.max_ms
+
     def __str__(self) -> str:
         return (
             f"Benchmark ({self.iterations} iterations): "
@@ -180,6 +191,17 @@ def benchmark(
         timings.append(elapsed)
 
     return BenchmarkResult(timings_ms=timings, iterations=iterations)
+
+
+def compare_benchmarks(a: BenchmarkResult, b: BenchmarkResult) -> float:
+    """Return the ratio b.mean / a.mean.
+
+    Values > 1 mean a is faster than b (b took proportionally longer).
+    Values < 1 mean b is faster than a.
+
+    Useful for "is the new implementation N times faster?" comparisons.
+    """
+    return b.mean_ms / a.mean_ms
 
 
 def _percentile(data: list[float], p: float) -> float:

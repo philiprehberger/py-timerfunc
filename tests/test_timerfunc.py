@@ -1,5 +1,12 @@
 import time
-from philiprehberger_timerfunc import timer, timed, benchmark, TimerResult, BenchmarkResult
+from philiprehberger_timerfunc import (
+    timer,
+    timed,
+    benchmark,
+    compare_benchmarks,
+    TimerResult,
+    BenchmarkResult,
+)
 
 
 def test_timer_context_manager():
@@ -75,3 +82,22 @@ def test_timed_preserves_name():
         pass
 
     assert my_function.__name__ == "my_function"
+
+
+def test_benchmark_result_fastest_slowest():
+    result = BenchmarkResult(timings_ms=[5.0, 1.0, 3.0, 9.0, 2.0], iterations=5)
+    assert result.fastest == 1.0
+    assert result.slowest == 9.0
+    assert result.fastest == result.min_ms
+    assert result.slowest == result.max_ms
+
+
+def test_compare_benchmarks_ratio():
+    a = BenchmarkResult(timings_ms=[10.0, 10.0, 10.0], iterations=3)
+    b = BenchmarkResult(timings_ms=[20.0, 20.0, 20.0], iterations=3)
+    assert compare_benchmarks(a, b) == 2.0
+
+
+def test_compare_benchmarks_identity():
+    a = BenchmarkResult(timings_ms=[7.0, 8.0, 9.0], iterations=3)
+    assert compare_benchmarks(a, a) == 1.0
